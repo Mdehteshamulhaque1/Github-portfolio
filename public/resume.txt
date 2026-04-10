@@ -1,0 +1,5 @@
+Backend Software Engineer Resume Placeholder
+
+Replace this file with your actual PDF resume and keep the same path or update profile.resumeFile in src/data/portfolioData.js.
+
+Suggested filename: resume.pdf

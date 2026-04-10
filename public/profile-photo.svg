@@ -1,0 +1,8 @@
+<svg width="480" height="480" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="480" rx="56" fill="#12243A"/>
+  <circle cx="240" cy="180" r="82" fill="#1FC4AE" fill-opacity="0.35"/>
+  <circle cx="240" cy="190" r="60" fill="#EAF4FF"/>
+  <path d="M126 372C126 312.369 174.369 264 234 264H246C305.631 264 354 312.369 354 372V384H126V372Z" fill="#EAF4FF"/>
+  <rect x="56" y="56" width="368" height="368" rx="36" stroke="#35527B"/>
+  <text x="240" y="442" text-anchor="middle" fill="#A9BDD9" font-size="26" font-family="Segoe UI, Arial" font-weight="700">Backend Engineer</text>
+</svg>
