@@ -1,4 +1,4 @@
-# Backend Engineer Portfolio (React + Vite)
+# Backend Engineer Portfolio 
 
 A modern, ATS-friendly, backend-focused developer portfolio with:
 
