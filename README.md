@@ -11,20 +11,6 @@ A modern, ATS-friendly, backend-focused developer portfolio with:
 - Responsive mobile-first layout
 - FastAPI contact backend integration
 
-## Features Implemented
-
-- Hero with typing animation and CTA buttons
-- About, Skills, Projects, Experience, Achievements sections
-- Project filtering by tech stack
-- System Design Thinking section with architecture blocks
-- API performance chart (Recharts)
-- Dynamic GitHub repository auto-fetch
-- Contact form (API-ready; mail fallback)
-- Scroll progress indicator
-- Lazy-loaded heavy sections for better performance
-- SEO metadata in HTML and React Helmet
-- Resume download button
-
 ## Folder Structure
 
 ```txt
