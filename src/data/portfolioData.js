@@ -2,7 +2,7 @@ export const profile = {
   name: import.meta.env.VITE_FULL_NAME || 'Ehteshamul Haque',
   location: import.meta.env.VITE_LOCATION || 'New Delhi, India',
   role: 'Python Backend Developer | FastAPI, Flask, Django | MySQL, MongoDB | Learning ML & Applied AI',
-  photo: import.meta.env.VITE_PROFILE_PHOTO || '/profile-photo.svg',
+  photo: import.meta.env.VITE_PROFILE_PHOTO || '/profile-photo.jpg',
   tagline:
     'I build efficient backend systems that improve performance, stay maintainable, and support growth with clean API design.',
   objective:
