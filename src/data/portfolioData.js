@@ -61,7 +61,7 @@ export const careerTimeline = [
 export const skills = {
   Languages: ['Python', 'C++', 'C', 'Java (Basic)'],
   Backend: ['FastAPI', 'Flask', 'Django'],
-  Database: ['MySQL', 'MongoDB', 'SQL'],
+  Database: ['SQL', 'MySQL', 'MongoDB'],
   Tools: ['Git & GitHub', 'VS Code'],
   Concepts: ['REST APIs', 'Authentication', 'DSA'],
 }

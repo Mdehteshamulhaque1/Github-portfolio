@@ -23,52 +23,52 @@ function HeroSection({ profile }) {
           <img
             src={profile.photo}
             alt={`${profile.name} profile`}
-            className="profile-photo hero-photo-free mb-4 h-40 w-40 object-cover"
+            className="profile-photo hero-photo-free mb-4 h-48 w-48 object-cover"
           />
           <p className="hero-gradient-name text-sm font-semibold uppercase tracking-[0.22em]">
             Software Developer
           </p>
-          <p className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--brand)]">
+          <p className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-(--brand)">
             <FiMapPin /> {profile.location}
           </p>
           <h1 className="hero-gradient-name text-3xl font-bold leading-tight md:text-6xl">
             {profile.name}
           </h1>
-          <p className="mt-4 text-xl font-semibold text-[var(--text-muted)] md:text-2xl">{profile.role}</p>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-[var(--text-muted)] md:text-lg">
+          <p className="mt-4 text-xl font-semibold text-(--text-muted) md:text-2xl">{profile.role}</p>
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-(--text-muted) md:text-lg">
             I build scalable backend systems that reduce latency, improve reliability, and support business-critical growth.
           </p>
-          <p className="mt-4 min-h-8 text-base font-semibold text-[var(--highlight)] md:text-lg">
+          <p className="mt-4 min-h-8 text-base font-semibold text-(--highlight) md:text-lg">
             Tech Stack: {typedWord}
-            <span className="ml-1 inline-block h-5 w-0.5 animate-pulse bg-[var(--highlight)] align-middle" />
+            <span className="ml-1 inline-block h-5 w-0.5 animate-pulse bg-(--highlight) align-middle" />
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 rounded-xl bg-[var(--brand)] px-5 py-3 text-sm font-bold text-white transition hover:translate-y-[-2px]"
+              className="inline-flex items-center gap-2 rounded-xl bg-(--brand) px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5"
             >
               View Projects <FiArrowRight />
             </a>
             <a
               href="#contact"
-              className="pill inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-bold text-[var(--text)] transition hover:translate-y-[-2px]"
+              className="pill inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-bold text-(--text) transition hover:-translate-y-0.5"
             >
               Contact Me <FiMail />
             </a>
             <a
               href={profile.resumeFile}
               download
-              className="pill inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold uppercase tracking-[0.12em] text-[var(--text)] transition hover:translate-y-[-2px]"
+              className="pill inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold uppercase tracking-[0.12em] text-(--text) transition hover:-translate-y-0.5"
             >
               <FiDownload /> Resume
             </a>
           </div>
-          <p className="mt-8 text-sm font-semibold uppercase tracking-[0.14em] text-[var(--brand)]">
+          <p className="mt-8 text-sm font-semibold uppercase tracking-[0.14em] text-(--brand)">
             Backend Specialist
           </p>
-          <h3 className="mt-1 text-lg font-bold text-[var(--text)]">Execution Snapshot</h3>
-          <ul className="mt-4 space-y-2 text-sm text-[var(--text-muted)]">
+          <h3 className="mt-1 text-lg font-bold text-(--text)">Execution Snapshot</h3>
+          <ul className="mt-4 space-y-2 text-sm text-(--text-muted)">
             <li>FastAPI services tuned for low latency and reliability.</li>
             <li>MySQL schema strategy focused on query efficiency.</li>
             <li>Authentication and API governance built from day one.</li>
@@ -77,7 +77,7 @@ function HeroSection({ profile }) {
             href={profile.github}
             target="_blank"
             rel="noreferrer"
-            className="pill mt-5 inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold text-[var(--text)]"
+            className="pill mt-5 inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold text-(--text)"
           >
             <FiGithub /> GitHub Profile
           </a>

@@ -8,7 +8,6 @@ function ExperienceSection({ experience }) {
         <SectionHeading
           eyebrow="Experience"
           title="Backend Experience Timeline"
-          subtitle="Role progression, responsibilities, and practical backend achievements delivered in training and project environments."
         />
 
         <div className="shape-experience relative space-y-6 before:absolute before:left-4 before:top-2 before:h-[calc(100%-1rem)] before:w-px before:bg-[var(--line)]">
