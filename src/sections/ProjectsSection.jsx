@@ -131,6 +131,20 @@ function ProjectsSection({ projects }) {
                   </ul>
                 </div>
               </div>
+
+              {project.stackPercentages ? (
+                <div className="mt-5">
+                  <h4 className="text-sm font-bold uppercase tracking-[0.12em]" style={{ color: 'var(--text)' }}>Tech Stack</h4>
+                  <div className="mt-3 flex flex-wrap gap-3">
+                    {project.stackPercentages.map((tech) => (
+                      <div key={tech.language} className="flex items-center gap-2 text-xs">
+                        <span style={{ color: 'var(--text-muted)' }}>{tech.language}</span>
+                        <span className="font-semibold" style={{ color: 'var(--brand)' }}>{tech.percentage}%</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
             </motion.article>
           ))}
         </div>

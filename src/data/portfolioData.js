@@ -13,7 +13,7 @@ export const profile = {
   linkedin:
     import.meta.env.VITE_LINKEDIN_PROFILE ||
     'https://www.linkedin.com/in/mdehteshamulhaque',
-  twitter: import.meta.env.VITE_TWITTER_PROFILE || '',
+  twitter: import.meta.env.VITE_TWITTER_PROFILE || 'https://x.com/Mdehteshamulhq',
   leetcode:
     import.meta.env.VITE_LEETCODE_PROFILE || 'https://leetcode.com/u/Mdehteshamulhaque/',
   githubUsername: import.meta.env.VITE_GITHUB_USERNAME || 'Mdehteshamulhaque1',
@@ -75,6 +75,11 @@ export const projects = [
     solution:
       'Built an optimized FastAPI backend with caching, cleaner request handling, and better database access patterns.',
     stack: ['Python', 'FastAPI', 'MySQL'],
+    stackPercentages: [
+      { language: 'Python', percentage: 70 },
+      { language: 'FastAPI', percentage: 20 },
+      { language: 'SQL', percentage: 10 },
+    ],
     features: [
       'Implemented caching to reduce redundant processing',
       'Streamlined request handling for faster responses',
@@ -85,7 +90,7 @@ export const projects = [
       'Reduced latency through optimized backend flow',
       'Focused on maintainable, performance-first architecture',
     ],
-    github: import.meta.env.VITE_PROJECT1_GITHUB || '',
+    github: 'https://github.com/Mdehteshamulhaque1/API-Latency-reducer.git',
     demo: '',
   },
   {
@@ -96,6 +101,11 @@ export const projects = [
     solution:
       'Created a backend workflow for collecting, processing, and analyzing social data with a focus on efficiency and readability.',
     stack: ['Python', 'APIs', 'Data Processing'],
+    stackPercentages: [
+      { language: 'Python', percentage: 75 },
+      { language: 'APIs', percentage: 15 },
+      { language: 'Data Processing', percentage: 10 },
+    ],
     features: [
       'Processed large datasets efficiently',
       'Implemented basic sentiment and trend analysis',
@@ -126,9 +136,30 @@ export const experience = [
 ]
 
 export const achievements = [
-  'Strengthened DSA problem solving in C++ while building backend-focused projects.',
-  'Built APIs and backend systems with a strong focus on performance and clean architecture.',
-  'Completed certifications in Java, Python, SQL, cybersecurity awareness, and professional skills.',
+  {
+    category: 'DSA Problems Solved',
+    items: [
+      'Strengthened problem-solving skills in python while developing backend-focused applications and REST APIs.',
+    ],
+  },
+  {
+    category: 'Backend Engineering Projects',
+    items: [
+      'Built projects focused on API optimization, monitoring systems, authentication, and database integration.',
+    ],
+  },
+  {
+    category: 'Python & FastAPI Development',
+    items: [
+      'Focused on scalable backend architecture, performance optimization, and clean API design.',
+    ],
+  },
+  {
+    category: 'Continuous Technical Growth',
+    items: [
+      'Actively improving SQL, System Design, DevOps fundamentals, and real-world development skills.',
+    ],
+  },
 ]
 
 export const certifications = [
@@ -209,16 +240,16 @@ export const systemDesigns = [
       'Uses cache-first strategy and query optimization to reduce latency while preserving response consistency.',
   },
   {
+    name: 'OpenAI Status Monitor',
+    steps: ['API Health Check', 'Status Polling', 'Data Aggregation', 'Alert System', 'Dashboard'],
+    explanation:
+      'Real-time monitoring system that tracks OpenAI API availability, performance metrics, and triggers alerts for service degradation.',
+  },
+  {
     name: 'Payment Reconciliation Engine',
     steps: ['Gateway Events', 'Queue', 'Reconciliation Worker', 'Rule Matcher', 'Audit Ledger'],
     explanation:
       'Ensures deterministic matching and auditable settlement status updates with idempotent reprocessing.',
-  },
-  {
-    name: 'Dynamic Pricing Engine',
-    steps: ['Demand Signals', 'Pricing Rules', 'Decision Engine', 'Validation Layer', 'Price API'],
-    explanation:
-      'Combines demand and inventory signals with rule constraints for explainable near-real-time price updates.',
   },
 ]
 

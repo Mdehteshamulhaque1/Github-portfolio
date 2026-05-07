@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FiArrowRight, FiDownload, FiGithub, FiMail, FiMapPin } from 'react-icons/fi'
+import { FiArrowRight, FiDownload, FiGithub, FiMail, FiMapPin, FiLinkedin, FiTwitter, FiExternalLink } from 'react-icons/fi'
 import { useTypewriter } from '../hooks/useTypewriter'
 
 const rotatingWords = [
@@ -34,6 +34,56 @@ function HeroSection({ profile }) {
           <h1 className="hero-gradient-name text-3xl font-bold leading-tight md:text-6xl">
             {profile.name}
           </h1>
+          <div className="mt-3 flex flex-wrap gap-3">
+            {profile.github && (
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-(--brand) transition hover:opacity-80"
+              >
+                <FiGithub size={16} /> GitHub
+              </a>
+            )}
+            {profile.linkedin && (
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-(--brand) transition hover:opacity-80"
+              >
+                <FiLinkedin size={16} /> LinkedIn
+              </a>
+            )}
+            {profile.twitter && (
+              <a
+                href={profile.twitter}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-(--brand) transition hover:opacity-80"
+              >
+                <FiTwitter size={16} /> X
+              </a>
+            )}
+            {profile.leetcode && (
+              <a
+                href={profile.leetcode}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-(--brand) transition hover:opacity-80"
+              >
+                <FiExternalLink size={16} /> LeetCode
+              </a>
+            )}
+            {profile.email && (
+              <a
+                href={`mailto:${profile.email}`}
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-(--brand) transition hover:opacity-80"
+              >
+                <FiMail size={16} /> Email
+              </a>
+            )}
+          </div>
           <p className="mt-4 text-xl font-semibold text-(--text-muted) md:text-2xl">{profile.role}</p>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-(--text-muted) md:text-lg">
             I build scalable backend systems that reduce latency, improve reliability, and support business-critical growth.

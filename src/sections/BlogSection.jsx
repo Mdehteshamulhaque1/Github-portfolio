@@ -9,7 +9,6 @@ function BlogSection({ blogPosts }) {
         <SectionHeading
           eyebrow="Blog"
           title="Technical writing and backend notes"
-          subtitle="A lightweight blog section to showcase your system-level thinking and communication clarity."
         />
 
         <div className="shape-blog grid gap-4 md:grid-cols-2 lg:grid-cols-3">

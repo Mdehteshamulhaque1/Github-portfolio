@@ -9,7 +9,6 @@ function CertificationsSection({ certifications }) {
         <SectionHeading
           eyebrow="Certifications"
           title="Formal learning and professional validation"
-          subtitle="A concise view of certifications that reinforce backend engineering, database, cybersecurity, and professional readiness."
         />
 
         <div className="shape-certifications grid gap-3 lg:grid-cols-2">
