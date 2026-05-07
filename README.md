@@ -1,7 +1,4 @@
 # Backend Engineer Portfolio 
-
-A modern, ATS-friendly, backend-focused developer portfolio with:
-
 - React + Vite
 - Tailwind CSS v4
 - Framer Motion animations
@@ -12,7 +9,6 @@ A modern, ATS-friendly, backend-focused developer portfolio with:
 - FastAPI contact backend integration
 
 ## Folder Structure
-
 ```txt
 Portfolio_2026/
   public/
