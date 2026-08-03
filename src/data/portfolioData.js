@@ -303,15 +303,87 @@ export const performanceData = [
 
 export const blogPosts = [
   {
-    title: 'Designing Latency-First APIs in FastAPI',
+    title: 'Payflow: Deterministic Payment Reconciliation in Fintech',
     summary:
-      'A practical framework to identify endpoint bottlenecks and reduce P95 latency with measurable outcomes.',
-    readTime: '6 min read',
+      'How Payflow ingests gateway events, matches transactions deterministically, and keeps an auditable settlement ledger.',
+    readTime: '7 min read',
+    body: [
+      {
+        heading: 'The Problem',
+        text: 'Payment records coming from multiple gateways often drift out of sync. The same transaction can appear with different amounts, statuses, or timestamps depending on the source, so teams fall back to slow manual reconciliation. That delays settlements and leaves gaps in the audit trail.',
+      },
+      {
+        heading: 'The Approach',
+        text: 'Payflow decouples ingestion from reconciliation. Gateway events are pushed into a queue, a reconciliation worker picks them up, and a rule matcher resolves each transaction against a defined set of settlement rules. Every outcome is written to an audit ledger so the full lifecycle stays visible.',
+      },
+      {
+        heading: 'Deterministic Matching',
+        text: 'Matching is rule-based and deterministic: order ID, amount, currency, and a bounded timestamp window define whether two records refer to the same payment. Because the same inputs always produce the same result, reconciliation runs are consistent and easy to verify.',
+      },
+      {
+        heading: 'Idempotent Reprocessing',
+        text: 'Retries and re-runs never create duplicates. Each event carries an identity key, and the worker skips events that have already settled. This makes the pipeline safe to re-run during incident recovery or when new matching rules are deployed.',
+      },
+      {
+        heading: 'Outcomes',
+        text: 'Deterministic matching on every attempt, zero duplicate settlements thanks to idempotent reprocessing, and a full audit trail for every status change — so settlement teams can trust the numbers and auditors can trace any decision back to the source event.',
+      },
+    ],
   },
   {
-    title: 'Reconciliation Systems: Deterministic Matching at Scale',
+    title: 'Infersight: Turning Raw Social Data into Insights',
     summary:
-      'Patterns for building auditable reconciliation pipelines in fintech environments.',
-    readTime: '8 min read',
+      'A backend pipeline that collects, cleans, and analyzes social media data to surface trends and sentiment signals.',
+    readTime: '6 min read',
+    body: [
+      {
+        heading: 'The Problem',
+        text: 'Raw social media data is noisy, unstructured, and high-volume. Posts, comments, and mentions arrive in inconsistent formats, and useful signals — trends and sentiment — are buried under irrelevant content. Processing it efficiently matters as much as analyzing it.',
+      },
+      {
+        heading: 'The Pipeline',
+        text: 'Infersight is built as a staged pipeline: data ingestion, cleaning and normalization, sentiment analysis, trend aggregation, and an insights API. Each stage is isolated, so the pipeline can be scaled or replaced without touching the rest of the system.',
+      },
+      {
+        heading: 'Cleaning and Normalization',
+        text: 'Incoming text is normalized — casing, whitespace, URLs, and noise tokens are handled before analysis. This keeps downstream scoring consistent and prevents garbage inputs from skewing results.',
+      },
+      {
+        heading: 'Sentiment and Trend Analysis',
+        text: 'Cleaned records are scored for sentiment and grouped by recurring topics and keywords. Aggregation surfaces what is trending over time rather than forcing analysts to inspect individual posts.',
+      },
+      {
+        heading: 'Outcomes',
+        text: 'Large data-heavy workflows are handled efficiently, raw inputs are turned into actionable insights, and the backend stays focused on speed and clarity — exactly what a fast-moving insights team needs.',
+      },
+    ],
+  },
+  {
+    title: 'Reducing API Latency: Caching and Query Optimization',
+    summary:
+      'How caching, cleaner request handling, and better database access patterns cut response latency and raised throughput.',
+    readTime: '5 min read',
+    body: [
+      {
+        heading: 'The Problem',
+        text: 'Repeated requests were slowing down API responses and making the backend less efficient under load. Each call hit the database even when the answer had been computed moments earlier.',
+      },
+      {
+        heading: 'Cache-First Strategy',
+        text: 'A cache-first flow was added: fast reads are served from Redis, and the database is only touched on a miss. Repeating work was eliminated for the most frequent request patterns, which removed the biggest source of latency.',
+      },
+      {
+        heading: 'Cleaner Request Handling',
+        text: 'Request handling was streamlined end to end — validation moved earlier, redundant processing was removed, and the service layer was split so each endpoint only did the work it needed. That keeps response times predictable.',
+      },
+      {
+        heading: 'Query Optimization',
+        text: 'High-traffic read paths were profiled and tuned: indexes were added where queries scanned too much, and expensive joins were restructured. The result is a database access layer that scales with traffic instead of against it.',
+      },
+      {
+        heading: 'Measured Results',
+        text: 'Latency dropped from 680ms to 210ms, throughput climbed from 210 to 480 rps, and the error rate fell from 6.8% to 2.2% — while keeping the architecture maintainable and performance-first.',
+      },
+    ],
   },
 ]

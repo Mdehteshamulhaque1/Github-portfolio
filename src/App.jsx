@@ -27,7 +27,6 @@ import { useTheme } from './hooks/useTheme'
 
 const ProjectsSection = lazy(() => import('./sections/ProjectsSection'))
 const SystemDesignSection = lazy(() => import('./sections/SystemDesignSection'))
-const GithubReposSection = lazy(() => import('./sections/GithubReposSection'))
 const BlogSection = lazy(() => import('./sections/BlogSection'))
 
 function SectionSkeleton() {
@@ -71,10 +70,6 @@ function App() {
         </Suspense>
 
         <PerformanceSection performanceData={performanceData} />
-
-        <Suspense fallback={<SectionSkeleton />}>
-          <GithubReposSection username={profile.githubUsername} />
-        </Suspense>
 
         <Suspense fallback={<SectionSkeleton />}>
           <BlogSection blogPosts={blogPosts} />
