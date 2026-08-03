@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: portfolio-contact-api
+    env: docker
+    plan: free
+    rootDir: backend
+    dockerfilePath: ./backend/Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_HOST
+        value: 0.0.0.0
+      - key: APP_PORT
+        value: 8000
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false
+      - key: CONTACT_RECEIVER_EMAIL
+        sync: false
+      - key: MAIL_PROVIDER
+        value: smtp
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        sync: false
+      - key: SMTP_USERNAME
+        sync: false
+      - key: SMTP_PASSWORD
+        sync: false
+      - key: SMTP_USE_TLS
+        value: true
