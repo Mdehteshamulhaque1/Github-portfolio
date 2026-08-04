@@ -99,6 +99,23 @@ h4 {
   opacity: 0.7;
 }
 
+.shape-ai {
+  position: relative;
+}
+
+.shape-ai::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 58px;
+  height: 58px;
+  border-right: 3px solid var(--highlight);
+  border-top: 3px solid var(--highlight);
+  border-radius: 0 14px 0 0;
+  opacity: 0.7;
+}
+
 .shape-projects {
   position: relative;
 }
@@ -116,9 +133,7 @@ h4 {
 
 .shape-certifications {
   position: relative;
-}
-
-.shape-certifications::before {
+}.shape-certifications::before {
   content: '';
   position: absolute;
   right: 0;

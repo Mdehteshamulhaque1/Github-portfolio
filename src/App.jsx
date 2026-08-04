@@ -6,6 +6,7 @@ import HeroSection from './sections/HeroSection'
 import AboutSection from './sections/AboutSection'
 import ResumeSection from './sections/ResumeSection'
 import SkillsSection from './sections/SkillsSection'
+import AIEngineeringSection from './sections/AIEngineeringSection'
 import PerformanceSection from './sections/PerformanceSection'
 import ExperienceSection from './sections/ExperienceSection'
 import AchievementsSection from './sections/AchievementsSection'
@@ -13,6 +14,7 @@ import CertificationsSection from './sections/CertificationsSection'
 import ContactSection from './sections/ContactSection'
 import {
   achievements,
+  aiEngineering,
   blogPosts,
   systemDesigns,
   experience,
@@ -55,6 +57,7 @@ function App() {
         <AboutSection profile={profile} />
         <ResumeSection />
         <SkillsSection skills={skills} skillLevels={skillLevels} />
+        <AIEngineeringSection aiEngineering={aiEngineering} />
 
         <Suspense fallback={<SectionSkeleton />}>
           <ProjectsSection projects={projects} />

@@ -6,6 +6,7 @@ import ThemeToggle from './ThemeToggle'
 const links = [
   ['About', '#about'],
   ['Skills', '#skills'],
+  ['AI', '#ai'],
   ['Projects', '#projects'],
   ['Architecture', '#system-design'],
   ['Contact', '#contact'],

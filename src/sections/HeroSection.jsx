@@ -7,7 +7,8 @@ import { useCountUp } from '../hooks/useCountUp'
 const rotatingWords = [
   'Scalable APIs',
   'Latency Optimization',
-  'Reliable Data Systems',
+  'Data Pipelines',
+  'Applied AI Systems',
 ]
 
 const STATS = [
@@ -103,9 +104,13 @@ function HeroSection({ profile }) {
             className="profile-photo hero-photo-free mb-4 h-[250px] w-[250px] object-cover"
           />
           <p className="hero-gradient-name text-sm font-semibold uppercase tracking-[0.22em]">
-            Software Developer
+            Python Backend Engineer
           </p>
-          <p className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-(--brand)">
+          <p className="mt-1 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] text-(--highlight)">
+            <span className="h-1.5 w-1.5 rounded-full bg-(--highlight)" />
+            Backend Architecture · APIs · Databases · Applied AI
+          </p>
+          <p className="mb-3 mt-2 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-(--brand)">
             <FiMapPin /> {profile.location}
           </p>
           <h1 className="hero-gradient-name text-3xl font-bold leading-tight md:text-6xl">
@@ -172,7 +177,7 @@ function HeroSection({ profile }) {
           </div>
           <p className="mt-4 text-xl font-semibold text-(--text-muted) md:text-2xl">{profile.role}</p>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-(--text-muted) md:text-lg">
-            I build scalable backend systems that reduce latency, improve reliability, and support business-critical growth.
+            I design and build scalable Python backend systems — clean APIs, optimized databases, and applied-AI features that reduce latency and support business-critical growth.
           </p>
           <p className="mt-4 min-h-8 text-base font-semibold text-(--highlight) md:text-lg">
             Tech Stack: {typedWord}
@@ -204,13 +209,14 @@ function HeroSection({ profile }) {
           <StatBand />
 
           <p className="mt-8 text-sm font-semibold uppercase tracking-[0.14em] text-(--brand)">
-            Backend Specialist
+            Backend Engineer
           </p>
-          <h3 className="mt-1 text-lg font-bold text-(--text)">Execution Snapshot</h3>
+          <h3 className="mt-1 text-lg font-bold text-(--text)">What I Focus On</h3>
           <ul className="mt-4 space-y-2 text-sm text-(--text-muted)">
             <li>FastAPI services tuned for low latency and reliability.</li>
             <li>MySQL schema strategy focused on query efficiency.</li>
             <li>Authentication and API governance built from day one.</li>
+            <li>Applied AI features for fintech and data-processing pipelines.</li>
           </ul>
           <a
             href={profile.github}

@@ -1,12 +1,12 @@
 export const profile = {
   name: import.meta.env.VITE_FULL_NAME || 'Ehteshamul Haque',
   location: import.meta.env.VITE_LOCATION || 'New Delhi, India',
-  role: 'Python Backend Developer | FastAPI, Flask, Django | MySQL, MongoDB | Learning ML & Applied AI',
+  role: 'Python Backend Engineer | FastAPI · Flask · Django | MySQL · MongoDB | Applied AI',
   photo: import.meta.env.VITE_PROFILE_PHOTO || '/profile-photo.jpg',
   tagline:
     'I build efficient backend systems that improve performance, stay maintainable, and support growth with clean API design.',
   objective:
-    'Build scalable backend services and efficient APIs with Python, FastAPI, Flask, and Django, while deepening applied AI knowledge for practical use cases in finance and secure digital systems.',
+    'Design and build scalable backend services and efficient APIs with Python, FastAPI, Flask, and Django, applying AI-driven insights for practical use cases in finance and secure digital systems.',
   email: import.meta.env.VITE_CONTACT_EMAIL || 'ehteshamulhaque736@gmail.com',
   github:
     import.meta.env.VITE_GITHUB_PROFILE || 'https://github.com/Mdehteshamulhaque1',
@@ -90,27 +90,43 @@ export const projects = [
     category: 'Fintech · Reconciliation',
     icon: 'credit-card',
     flow: ['Gateway Events', 'Queue', 'Reconciliation Worker', 'Rule Matcher', 'Audit Ledger'],
-    challenge:
+    problem:
       'Payment records from multiple gateways drifted out of sync, forcing slow manual reconciliation, delayed settlements, and gaps in the audit trail.',
-    solution:
-      'Built a reconciliation engine that ingests gateway events into a queue, matches transactions deterministically against settlement rules, and writes every outcome to an auditable ledger with idempotent reprocessing.',
+    architecture:
+      'Gateway events are pushed into a queue, a reconciliation worker picks them up, and a deterministic rule matcher resolves each transaction against settlement rules. Every outcome is written to an auditable ledger so the full lifecycle stays visible and retries never create duplicates.',
+    backend: [
+      'FastAPI service with Pydantic schema-first validation on ingestion and settlement endpoints',
+      'Queue-backed ingestion decouples event producers from the reconciliation worker',
+      'Idempotent reprocessing keyed on the event identity — re-runs never duplicate settlements',
+      'Deterministic rule matcher resolves by order ID, amount, currency, and timestamp window',
+    ],
+    database: [
+      'MySQL relational schema for transactions, settlement rules, and status history',
+      'Indexed high-traffic lookups on order ID and event key to keep matching fast',
+      'Audit ledger table records every status change for full traceability',
+    ],
+    apis: [
+      { method: 'POST', path: '/api/events/ingest', detail: 'Accept gateway events into the queue' },
+      { method: 'POST', path: '/api/events/reprocess', detail: 'Trigger idempotent reprocessing' },
+      { method: 'GET', path: '/api/settlements/{txn_id}', detail: 'Settlement status lookup' },
+      { method: 'GET', path: '/api/audit/{txn_id}', detail: 'Full ledger trail for a transaction' },
+    ],
+    challenges: [
+      'Handling duplicate and out-of-order events arriving from multiple gateways',
+      'Keeping reconciliation deterministic and verifiable across re-runs',
+      'Scaling ingestion without blocking settlement processing',
+    ],
+    results: [
+      'Deterministic matching on every attempt',
+      'Zero duplicate settlements via idempotent reprocessing',
+      'Auditable trail for every settlement change',
+    ],
     stack: ['Python', 'FastAPI', 'MySQL', 'Redis'],
     stackPercentages: [
       { language: 'Python', percentage: 65 },
       { language: 'FastAPI', percentage: 20 },
       { language: 'MySQL', percentage: 10 },
       { language: 'Redis', percentage: 5 },
-    ],
-    features: [
-      'Deterministic rule-based transaction matching',
-      'Queue-backed ingestion for high-volume gateway events',
-      'Idempotent reprocessing with a full audit ledger',
-      'Clear settlement status updates for every transaction',
-    ],
-    metrics: [
-      'Deterministic matching on every attempt',
-      'Zero duplicates via idempotent reprocessing',
-      'Auditable trail for every settlement change',
     ],
     github: import.meta.env.VITE_PROJECT1_GITHUB || '',
     demo: '',
@@ -121,26 +137,41 @@ export const projects = [
     category: 'Data Processing · Insights',
     icon: 'chart',
     flow: ['Data Ingestion', 'Cleaning & Normalization', 'Sentiment Analysis', 'Trend Aggregation', 'Insights API'],
-    challenge:
+    problem:
       'Raw social media data needed to be processed efficiently so useful trends, sentiment shifts, and user behavior signals could be extracted at scale.',
-    solution:
-      'Created a data-processing backend workflow that collects, cleans, normalizes, and analyzes social data to surface trends and sentiment signals as clear, actionable outputs.',
+    architecture:
+      'A staged backend pipeline — ingestion, cleaning and normalization, sentiment analysis, and trend aggregation — turns noisy social data into signals that are exposed through a clean insights API. Each stage is isolated so it can scale or be replaced independently.',
+    backend: [
+      'Staged Python pipeline separates ingestion, cleaning, and analysis',
+      'Text normalization handles casing, whitespace, URLs, and noise before scoring',
+      'Sentiment scoring and trend aggregation surface signals from raw posts',
+      'Insights API returns processed data as clean, readable outputs',
+    ],
+    database: [
+      'Structured storage for cleaned posts, sentiment scores, and aggregated trends',
+      'Batch-friendly writes sized for high-volume ingestion',
+      'Pagination-friendly query patterns for the insights API',
+    ],
+    apis: [
+      { method: 'GET', path: '/api/insights/trends', detail: 'Current trending topics and keywords' },
+      { method: 'GET', path: '/api/insights/sentiment', detail: 'Sentiment distribution over time' },
+      { method: 'GET', path: '/api/insights/posts', detail: 'Paginated cleaned post feed' },
+    ],
+    challenges: [
+      'Handling noisy, unstructured, high-volume input without skewing results',
+      'Keeping downstream sentiment scoring consistent after cleaning',
+      'Aggregating signals so analysts do not review every raw post',
+    ],
+    results: [
+      'Data-heavy workflows handled efficiently',
+      'Raw inputs turned into actionable insights',
+      'Backend focused on speed and clarity',
+    ],
     stack: ['Python', 'APIs', 'Data Processing'],
     stackPercentages: [
       { language: 'Python', percentage: 75 },
       { language: 'APIs', percentage: 15 },
       { language: 'Data Processing', percentage: 10 },
-    ],
-    features: [
-      'Processed large datasets with efficient pipelines',
-      'Implemented sentiment and trend analysis',
-      'Generated meaningful insights from raw data',
-      'Clean, readable outputs designed for action',
-    ],
-    metrics: [
-      'Handled data-heavy workflows efficiently',
-      'Turned raw inputs into actionable insights',
-      'Backend focused on speed and clarity',
     ],
     github: import.meta.env.VITE_PROJECT2_GITHUB || '',
     demo: '',
@@ -151,27 +182,42 @@ export const projects = [
     category: 'API Performance',
     icon: 'zap',
     flow: ['Client Request', 'API Gateway', 'FastAPI Service', 'Redis Cache', 'MySQL'],
-    challenge:
+    problem:
       'Repeated requests were slowing down API responses and making the backend less efficient under load.',
-    solution:
-      'Built an optimized FastAPI backend with caching, cleaner request handling, and better database access patterns to cut latency and raise throughput.',
+    architecture:
+      'Requests enter through an API gateway, fast reads are served cache-first from Redis, and MySQL is only queried on a cache miss. High-traffic read paths were profiled and tuned so the data layer scales with traffic instead of against it.',
+    backend: [
+      'Cache-first FastAPI service — repeated reads served from Redis',
+      'Streamlined request handling: validation early, redundant processing removed',
+      'Split service layer so each endpoint only does the work it needs',
+      'Profiled and tuned the highest-traffic read paths',
+    ],
+    database: [
+      'Indexes added where queries scanned too much data',
+      'Expensive joins restructured on read-heavy paths',
+      'Cache invalidation strategy keeps responses consistent',
+    ],
+    apis: [
+      { method: 'GET', path: '/api/resources', detail: 'Cache-first list endpoint' },
+      { method: 'GET', path: '/api/resources/{id}', detail: 'Cached single-resource lookup' },
+      { method: 'POST', path: '/api/resources', detail: 'Write-through cache update' },
+    ],
+    challenges: [
+      'Reducing latency without breaking response consistency',
+      'Keeping cache and database in sync on writes',
+      'Maintaining predictable response times under load',
+    ],
+    results: [
+      'Latency dropped from 680ms to 210ms',
+      'Throughput raised from 210 to 480 rps',
+      'Error rate cut from 6.8% to 2.2%',
+    ],
     stack: ['Python', 'FastAPI', 'MySQL', 'Redis'],
     stackPercentages: [
       { language: 'Python', percentage: 65 },
       { language: 'FastAPI', percentage: 20 },
       { language: 'MySQL', percentage: 10 },
       { language: 'Redis', percentage: 5 },
-    ],
-    features: [
-      'Implemented caching to reduce redundant processing',
-      'Streamlined request handling for faster responses',
-      'Query optimization on high-traffic read paths',
-      'Scalable backend with clean separation of concerns',
-    ],
-    metrics: [
-      'Reduced latency through optimized backend flow',
-      'Improved response efficiency for repeated requests',
-      'Maintainable, performance-first architecture',
     ],
     github:
       import.meta.env.VITE_PROJECT3_GITHUB ||
@@ -297,18 +343,33 @@ export const systemDesigns = [
   {
     name: 'Payflow — Payment Reconciliation',
     steps: ['Gateway Events', 'Queue', 'Reconciliation Worker', 'Rule Matcher', 'Audit Ledger'],
+    layers: [
+      { tier: 'Ingestion', components: ['Gateway Events', 'Event Queue'] },
+      { tier: 'Processing', components: ['Reconciliation Worker', 'Rule Matcher'] },
+      { tier: 'Storage', components: ['Audit Ledger', 'MySQL'] },
+    ],
     explanation:
       'Ensures deterministic matching and auditable settlement status updates with idempotent reprocessing.',
   },
   {
     name: 'Infersight — Social Insights Pipeline',
     steps: ['Data Ingestion', 'Cleaning & Normalization', 'Sentiment Analysis', 'Trend Aggregation', 'Insights API'],
+    layers: [
+      { tier: 'Ingestion', components: ['Social Data Sources', 'Data Ingestion'] },
+      { tier: 'Processing', components: ['Cleaning & Normalization', 'Sentiment Analysis', 'Trend Aggregation'] },
+      { tier: 'Output', components: ['Insights API'] },
+    ],
     explanation:
       'Processes raw social media data through a scalable pipeline to surface trends and sentiment signals as actionable insights.',
   },
   {
     name: 'API Latency Reducer',
     steps: ['Client Request', 'API Gateway', 'FastAPI Service', 'Redis Cache', 'MySQL'],
+    layers: [
+      { tier: 'Entry', components: ['Client Request', 'API Gateway'] },
+      { tier: 'Service', components: ['FastAPI Service', 'Redis Cache'] },
+      { tier: 'Data', components: ['MySQL'] },
+    ],
     explanation:
       'Uses cache-first strategy and query optimization to reduce latency while preserving response consistency.',
   },
@@ -320,6 +381,55 @@ export const performanceData = [
   { name: 'Caching', latency: 260, throughput: 430, errors: 3.1 },
   { name: 'Current', latency: 210, throughput: 480, errors: 2.2 },
 ]
+
+export const aiEngineering = {
+  intro:
+    'Applied AI and ML fundamentals, used in backend projects and fintech training — built with Python data pipelines and production-minded thinking.',
+  areas: [
+    {
+      icon: 'message',
+      title: 'Sentiment Analysis',
+      detail:
+        'Applied text scoring and classification in the Infersight pipeline to surface sentiment signals from raw social data.',
+    },
+    {
+      icon: 'trend',
+      title: 'AI in Fintech',
+      detail:
+        'Completed LinkedIn Learning AI in Fintech training (4.40 NASBA CPE) covering applied AI in financial workflows.',
+    },
+    {
+      icon: 'pipeline',
+      title: 'Data Pipelines for AI',
+      detail:
+        'Designed staged ingestion, cleaning, and normalization pipelines that prepare raw data for downstream analysis.',
+    },
+    {
+      icon: 'learn',
+      title: 'ML Learning Path',
+      detail:
+        'Actively studying ML fundamentals and applied AI to move from rule-based systems toward model-driven features.',
+    },
+  ],
+  roadmap: [
+    {
+      step: 'Foundations',
+      detail: 'Python, SQL, statistics, and data structuring basics.',
+    },
+    {
+      step: 'ML Fundamentals',
+      detail: 'Classification, regression, and evaluation practices.',
+    },
+    {
+      step: 'Applied AI',
+      detail: 'Fintech use cases, NLP and sentiment scoring, responsible AI.',
+    },
+    {
+      step: 'Production AI',
+      detail: 'Integrating models into FastAPI services with clean pipelines.',
+    },
+  ],
+}
 
 export const blogPosts = [
   {
