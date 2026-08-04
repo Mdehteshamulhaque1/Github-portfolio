@@ -30,7 +30,7 @@ const skillItemIconMap = {
   DSA: FiLayers,
 }
 
-function SkillsSection({ skills }) {
+function SkillsSection({ skills, skillLevels }) {
   return (
     <section id="skills" className="section-anchor px-4 pt-16 md:px-6">
       <div className="mx-auto max-w-6xl">
@@ -40,7 +40,7 @@ function SkillsSection({ skills }) {
           subtitle="Organized capabilities that support scalable API development and production engineering workflows."
         />
 
-        <div className="shape-skills grid gap-4 lg:grid-cols-5">
+        <div className="shape-skills grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {Object.entries(skills).map(([category, items], index) => {
             const CategoryIcon = iconMap[category] || FiCode
 
@@ -58,21 +58,34 @@ function SkillsSection({ skills }) {
                   {category}
                 </h3>
 
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-4 space-y-3.5">
                   {items.map((item) => {
                     const skillName = item.replace(/\s*\([^)]*\)\s*$/, '')
                     const ItemIcon = skillItemIconMap[skillName] || FiCode
+                    const level =
+                      (skillLevels && (skillLevels[item] ?? skillLevels[skillName])) || 65
 
                     return (
-                      <motion.span
-                        key={item}
-                        className="pill skill-pill inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide text-(--text-muted)"
-                        whileHover={{ y: -2, scale: 1.02 }}
-                        transition={{ duration: 0.18 }}
-                      >
-                        <ItemIcon className="text-(--brand)" />
-                        {item}
-                      </motion.span>
+                      <div key={item}>
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-(--text-muted)">
+                            <ItemIcon className="shrink-0 text-(--brand)" />
+                            {item}
+                          </span>
+                        </div>
+                        <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-(--line)">
+                          <motion.div
+                            className="h-full rounded-full"
+                            style={{
+                              background: 'linear-gradient(90deg, var(--brand), var(--highlight))',
+                            }}
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${level}%` }}
+                            viewport={{ once: true, amount: 0.4 }}
+                            transition={{ duration: 0.9, delay: 0.06 * index, ease: 'easeOut' }}
+                          />
+                        </div>
+                      </div>
                     )
                   })}
                 </div>

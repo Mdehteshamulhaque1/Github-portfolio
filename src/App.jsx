@@ -20,6 +20,7 @@ import {
   performanceData,
   profile,
   projects,
+  skillLevels,
   skills,
   certifications,
 } from './data/portfolioData'
@@ -55,7 +56,7 @@ function App() {
         <HeroSection profile={profile} />
         <AboutSection profile={profile} />
         <ResumeSection />
-        <SkillsSection skills={skills} />
+        <SkillsSection skills={skills} skillLevels={skillLevels} />
 
         <Suspense fallback={<SectionSkeleton />}>
           <ProjectsSection projects={projects} />

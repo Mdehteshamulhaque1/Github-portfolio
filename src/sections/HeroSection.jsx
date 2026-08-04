@@ -1,12 +1,90 @@
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 import { FiArrowRight, FiDownload, FiGithub, FiMail, FiMapPin, FiLinkedin, FiTwitter, FiExternalLink } from 'react-icons/fi'
 import { useTypewriter } from '../hooks/useTypewriter'
+import { useCountUp } from '../hooks/useCountUp'
 
 const rotatingWords = [
   'Scalable APIs',
   'Latency Optimization',
   'Reliable Data Systems',
 ]
+
+const STATS = [
+  { value: 3, suffix: '+', label: 'Backend Projects' },
+  { value: 4, suffix: '', label: 'Certifications' },
+  { value: 69, suffix: '%', label: 'Less Latency' },
+  { value: 480, suffix: '', label: 'Max Throughput (rps)' },
+]
+
+const marqueeTech = [
+  'Python',
+  'FastAPI',
+  'Flask',
+  'Django',
+  'MySQL',
+  'MongoDB',
+  'Redis',
+  'SQL',
+  'REST APIs',
+  'Git & GitHub',
+  'C++',
+  'C',
+  'Java',
+  'DSA',
+]
+
+function StatItem({ value, suffix, label, active, delay }) {
+  const count = useCountUp(value, active, 1100 + delay)
+  return (
+    <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface-strong)] p-4 text-center">
+      <p className="text-3xl font-bold text-[var(--text)] md:text-4xl">
+        {Math.round(count)}
+        <span className="text-[var(--brand)]">{suffix}</span>
+      </p>
+      <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)]">
+        {label}
+      </p>
+    </div>
+  )
+}
+
+function StatBand() {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, amount: 0.4 })
+  return (
+    <motion.div
+      ref={ref}
+      className="mt-9 grid grid-cols-2 gap-3 md:grid-cols-4"
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.5 }}
+    >
+      {STATS.map((stat, index) => (
+        <StatItem key={stat.label} {...stat} active={inView} delay={index * 120} />
+      ))}
+    </motion.div>
+  )
+}
+
+function TechMarquee() {
+  return (
+    <div className="marquee-wrap relative mt-10 overflow-hidden py-1">
+      <div className="marquee-track flex w-max items-center gap-3">
+        {[...marqueeTech, ...marqueeTech].map((tech, index) => (
+          <span
+            key={`${tech}-${index}`}
+            className="inline-flex shrink-0 items-center gap-2 rounded-full border border-[var(--line)] bg-[var(--surface-strong)] px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-[var(--text-muted)]"
+          >
+            <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: 'var(--brand)' }} />
+            {tech}
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
 
 function HeroSection({ profile }) {
   const typedWord = useTypewriter(rotatingWords)
@@ -34,6 +112,15 @@ function HeroSection({ profile }) {
           <h1 className="hero-gradient-name text-3xl font-bold leading-tight md:text-6xl">
             {profile.name}
           </h1>
+          <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-green-500/40 bg-green-500/10 px-3 py-1.5">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+            </span>
+            <span className="text-xs font-bold uppercase tracking-[0.16em] text-green-600">
+              Open to Work
+            </span>
+          </div>
           <div className="mt-3 flex flex-wrap gap-3">
             {profile.github && (
               <a
@@ -114,6 +201,9 @@ function HeroSection({ profile }) {
               <FiDownload /> Resume
             </a>
           </div>
+
+          <StatBand />
+
           <p className="mt-8 text-sm font-semibold uppercase tracking-[0.14em] text-(--brand)">
             Backend Specialist
           </p>
@@ -131,6 +221,8 @@ function HeroSection({ profile }) {
           >
             <FiGithub /> GitHub Profile
           </a>
+
+          <TechMarquee />
         </div>
       </motion.div>
     </section>

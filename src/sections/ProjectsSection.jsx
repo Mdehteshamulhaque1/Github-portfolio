@@ -55,6 +55,28 @@ function ProjectCard({ project }) {
 
       <div className={`relative p-6 md:p-7 ${featured ? 'lg:grid lg:grid-cols-2 lg:gap-9' : ''}`}>
         <div>
+          {project.flow ? (
+            <div className="mb-6 flex flex-wrap items-center gap-1.5">
+              {project.flow.map((step, stepIndex) => (
+                <motion.div
+                  key={step}
+                  className="inline-flex items-center gap-1.5"
+                  initial={{ opacity: 0, scale: 0.92 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ delay: 0.05 * stepIndex, duration: 0.25 }}
+                >
+                  <span className="rounded-lg border border-[var(--line)] bg-[var(--surface-strong)] px-2.5 py-1.5 text-[11px] font-bold uppercase tracking-wide text-[var(--text)]">
+                    {step}
+                  </span>
+                  {stepIndex < project.flow.length - 1 ? (
+                    <FiArrowRight className="shrink-0 text-[var(--brand)]" size={12} />
+                  ) : null}
+                </motion.div>
+              ))}
+            </div>
+          ) : null}
+
           <div className="flex items-start gap-4">
             <motion.span
               className="project-icon"

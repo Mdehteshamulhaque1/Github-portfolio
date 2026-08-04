@@ -66,12 +66,31 @@ export const skills = {
   Concepts: ['REST APIs', 'Authentication', 'DSA'],
 }
 
+export const skillLevels = {
+  Python: 88,
+  'C++': 72,
+  C: 72,
+  'Java (Basic)': 45,
+  FastAPI: 82,
+  Flask: 70,
+  Django: 65,
+  SQL: 82,
+  MySQL: 80,
+  MongoDB: 68,
+  'Git & GitHub': 78,
+  'VS Code': 75,
+  'REST APIs': 84,
+  Authentication: 72,
+  DSA: 68,
+}
+
 export const projects = [
   {
     id: 'payflow',
     title: 'Payflow — Payment Reconciliation Engine',
     category: 'Fintech · Reconciliation',
     icon: 'credit-card',
+    flow: ['Gateway Events', 'Queue', 'Reconciliation Worker', 'Rule Matcher', 'Audit Ledger'],
     challenge:
       'Payment records from multiple gateways drifted out of sync, forcing slow manual reconciliation, delayed settlements, and gaps in the audit trail.',
     solution:
@@ -102,6 +121,7 @@ export const projects = [
     title: 'Infersight — Social Media Insights System',
     category: 'Data Processing · Insights',
     icon: 'chart',
+    flow: ['Data Ingestion', 'Cleaning & Normalization', 'Sentiment Analysis', 'Trend Aggregation', 'Insights API'],
     challenge:
       'Raw social media data needed to be processed efficiently so useful trends, sentiment shifts, and user behavior signals could be extracted at scale.',
     solution:
@@ -131,6 +151,7 @@ export const projects = [
     title: 'API Latency Reducer',
     category: 'API Performance',
     icon: 'zap',
+    flow: ['Client Request', 'API Gateway', 'FastAPI Service', 'Redis Cache', 'MySQL'],
     challenge:
       'Repeated requests were slowing down API responses and making the backend less efficient under load.',
     solution:

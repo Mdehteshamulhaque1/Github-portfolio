@@ -1,34 +1,8 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { FiActivity, FiAlertTriangle, FiTrendingDown, FiTrendingUp, FiZap } from 'react-icons/fi'
 import SectionHeading from '../components/SectionHeading'
-
-function useCountUp(target, active, duration = 1300) {
-  const [value, setValue] = useState(0)
-
-  useEffect(() => {
-    if (!active) {
-      return undefined
-    }
-
-    let frame
-    const start = performance.now()
-
-    const tick = (now) => {
-      const progress = Math.min((now - start) / duration, 1)
-      const eased = 1 - Math.pow(1 - progress, 3)
-      setValue(target * eased)
-      if (progress < 1) {
-        frame = requestAnimationFrame(tick)
-      }
-    }
-
-    frame = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(frame)
-  }, [active, target, duration])
-
-  return value
-}
+import { useCountUp } from '../hooks/useCountUp'
 
 function MetricCard({ icon, label, before, after, unit, lowerIsBetter, delay }) {
   const Icon = icon
