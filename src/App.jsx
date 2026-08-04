@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { Helmet } from 'react-helmet-async'
 import Navigation from './components/Navigation'
-import ScrollProgress from './components/ScrollProgress'
 import Footer from './components/Footer'
 import HeroSection from './sections/HeroSection'
 import AboutSection from './sections/AboutSection'
@@ -49,7 +48,6 @@ function App() {
         />
       </Helmet>
 
-      <ScrollProgress />
       <Navigation theme={theme} onToggleTheme={toggleTheme} />
 
       <main>

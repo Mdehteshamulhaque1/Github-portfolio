@@ -30,7 +30,6 @@ const marqueeTech = [
   'Git & GitHub',
   'C++',
   'C',
-  'Java',
   'DSA',
 ]
 

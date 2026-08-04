@@ -24,7 +24,6 @@ const skillItemIconMap = {
   'VS Code': FiTool,
   'C++': FiCode,
   C: FiCode,
-  Java: FiCode,
   'REST APIs': FiLayers,
   Authentication: FiLayers,
   DSA: FiLayers,
